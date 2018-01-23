@@ -3,7 +3,11 @@
 
 ✨ All that shimmers is gold! 
 
-# Required Software
+# Overview
+
+![overview](overview.svg)
+
+## Required Software
 To get started, it's essential you have the following software installed on the host you'd like to work on:
 
 Name | Description
@@ -12,6 +16,7 @@ Name | Description
 [`vagrant`](https://www.vagrantup.com/) | Provides a declarative configuration file which describes all your software requirements, packages, operating system configuration, users, and more.
 [`virtualbox`](https://www.virtualbox.org/wiki/Downloads) | General-purpose full virtualizer for x86 hardware, targeted at server, desktop and embedded use.
 
-# Docker
+## Docker
+> You **do not** need this installed on your host operating system!
 
 For as many services as possible, we plan on utilizing [`docker`](https://www.docker.com/) containers. 
