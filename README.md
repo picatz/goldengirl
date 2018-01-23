@@ -5,7 +5,7 @@
 
 # Overview
 
-![overview](overview.svg)
+![overview](overview.png)
 
 ## Required Software
 To get started, it's essential you have the following software installed on the host you'd like to work on:
