@@ -102,4 +102,7 @@ Vagrant.configure(2) do |config|
     echo "tty1" > /etc/securetty
     chmod 700 /root
   SHELL
+
+  # Add dockerfiles
+  config.vm.provision "file", source: "dockerfiles", destination: "$HOME/dockerfiles"
 end
