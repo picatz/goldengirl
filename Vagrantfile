@@ -52,6 +52,7 @@ Vagrant.configure(2) do |config|
  
   # Basic admin / monitoring tools 
   config.vm.provision "shell", inline: <<-SHELL
+    yum install vim -y
     yum install htop -y
     yum install ncdu -y
     yum install powertop -y
