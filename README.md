@@ -22,3 +22,35 @@ Name | Description
 > You **do not** need this installed on your host operating system!
 
 For as many services as possible, we plan on utilizing [`docker`](https://www.docker.com/) containers. 
+
+## Getting Started
+
+Let's grab a copy of this project:
+
+```
+$ git clone https://github.com/picatz/goldengirl.git
+```
+
+Now we can change into the `goldengirl` directory:
+
+```
+$ cd goldengirl
+```
+
+To start up the VM, we can use `vagrant` ( this could take a few minutes ):
+
+```
+$ vagrant up
+``` 
+
+Once the VM is started, we can now simply `ssh` into it:
+
+```
+$ vagrant ssh
+```
+
+To get out of the VM, simple `exit`. To completly destory it:
+
+```
+$ vagrant destroy
+```
