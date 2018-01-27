@@ -80,6 +80,7 @@ Vagrant.configure(2) do |config|
     yum install net-tools -y
     yum install aide -y
     yum install wget -y
+    yum install bind-utils -y
     yum install mlocate -y; updatedb
   SHELL
   
@@ -106,9 +107,6 @@ Vagrant.configure(2) do |config|
   
   # golang
   config.vm.provision "shell", inline: <<-SHELL
-    yum update -y
-    yum install epel-release -y
-    yum install wget vim git -y
     wget https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.9.3.linux-amd64.tar.gz
     export PATH=$PATH:/usr/local/go/bin
