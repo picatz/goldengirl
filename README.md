@@ -1,6 +1,8 @@
 # Golden Girl
 > Official-ish Golden Image Research Group
 
+![beautiful](golden.jpeg)
+
 ✨ All that shimmers is gold! 
 
 # Overview
