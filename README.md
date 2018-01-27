@@ -49,7 +49,7 @@ Once the VM is started, we can now simply `ssh` into it:
 $ vagrant ssh
 ```
 
-To get out of the VM, simple `exit`. To completly destory it:
+To get out of the VM, simply `exit`. To completly destory it:
 
 ```
 $ vagrant destroy
