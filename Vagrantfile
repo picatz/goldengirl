@@ -106,15 +106,26 @@ Vagrant.configure(2) do |config|
   
   # golang
   config.vm.provision "shell", inline: <<-SHELL
+    yum update -y
+    yum install epel-release -y
+    yum install wget vim git -y
     wget https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz
     tar -C /usr/local -xzf go1.9.3.linux-amd64.tar.gz
-    echo "export GOPATH=$HOME/golang-projects" >> ~/.bash_profile
-    echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
-    echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bash_profile
-    source ~/.bash_profile
+    export PATH=$PATH:/usr/local/go/bin
+    export GOPATH=$HOME/golang-projects
+    export GOROOT=/usr/local/go
+    export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+    echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.bashrc
+    echo "export PATH=$PATH:/usr/local/go/bin" >> /home/vagrant/.bashrc
+    echo "export GOPATH=$HOME/golang-projects" >> ~/.bashrc
+    echo "export GOPATH=$HOME/golang-projects" >> /home/vagrant/.bashrc
+    echo "export GOROOT=/usr/local/go" >> ~/.bashrc
+    echo "export GOROOT=/usr/local/go" >> /home/vagrant/.bashrc
+    echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bashrc
+    echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> /home/vagrant/.bashrc
+    sed -i -e 's/root/vagrant/g' /home/vagrant/.bashrc
     git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    vim --cmd ":PlugInstall" --cmd ":q"
     echo "call plug#begin()" >> ~/.vimrc
     echo "	Plug 'fatih/vim-go'" >> ~/.vimrc
     echo "call plug#end()" >> ~/.vimrc
