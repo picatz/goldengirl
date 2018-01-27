@@ -52,6 +52,7 @@ Vagrant.configure(2) do |config|
  
   # Basic admin / monitoring tools 
   config.vm.provision "shell", inline: <<-SHELL
+    yum install git -y
     yum install vim -y
     yum install htop -y
     yum install ncdu -y
@@ -101,6 +102,31 @@ Vagrant.configure(2) do |config|
   config.vm.provision "shell", inline: <<-SHELL
     echo "tty1" > /etc/securetty
     chmod 700 /root
+  SHELL
+  
+  # golang
+  config.vm.provision "shell", inline: <<-SHELL
+    wget https://dl.google.com/go/go1.9.3.linux-amd64.tar.gz
+    tar -C /usr/local -xzf go1.9.3.linux-amd64.tar.gz
+    echo "export GOPATH=$HOME/golang-projects" >> ~/.bash_profile
+    echo "export GOROOT=/usr/local/go" >> ~/.bash_profile
+    echo "export PATH=$GOPATH/bin:$GOROOT/bin:$PATH" >> ~/.bash_profile
+    source ~/.bash_profile
+    git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    vim --cmd ":PlugInstall" --cmd ":q"
+    echo "call plug#begin()" >> ~/.vimrc
+    echo "	Plug 'fatih/vim-go'" >> ~/.vimrc
+    echo "call plug#end()" >> ~/.vimrc
+    echo "let g:go_version_warning = 0" >> ~/.vimrc
+    echo "syntax on" >> ~/.vimrc
+    echo "set ruler" >> ~/.vimrc
+    echo "set nu" >> ~/.vimrc
+    echo "set noswapfile" >> ~/.vimrc
+    echo "filetype on" >> ~/.vimrc
+    echo "filetype indent on" >> ~/.vimrc
+    go env
+    go version
   SHELL
 
   # Add dockerfiles
