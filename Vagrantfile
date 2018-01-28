@@ -82,6 +82,7 @@ Vagrant.configure(2) do |config|
     yum install wget -y
     yum install bind-utils -y
     yum install mlocate -y; updatedb
+    yum install medusa -y
   SHELL
   
   # Basic security tools
