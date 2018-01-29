@@ -84,6 +84,7 @@ Vagrant.configure(2) do |config|
     yum install mlocate -y; updatedb
     yum install medusa -y
     yum install mysql -y
+    yum install postgresql -y
   SHELL
   
   # Basic security tools
